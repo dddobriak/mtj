@@ -7,13 +7,16 @@ use Pavel\MessagesToJson\Enums\FileEnum;
 
 class MessageService
 {
-    public function saveMessagesToJson($userId): string
+    public function saveMessagesToJson($choise, $ask): string
     {
         $user = config('messages-to-json.user');
 
-        $messages = $user::findOrFail($userId)->messages;
+        $messages = match($choise) {
+            'UserId' => $user::findOrFail($ask)->messages,
+            'Email' => $user::where('email', $ask)->firstOrFail()->messages,
+        };
 
-        $file = $userId . '-' . FileEnum::Messages->value . FileEnum::Ext->value;
+        $file = $ask . '-' . FileEnum::Messages->value . FileEnum::Ext->value;
 
         Storage::disk(config('messages-to-json.disk'))
             ->put(
