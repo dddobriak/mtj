@@ -1,0 +1,27 @@
+{
+    "name": "pavel/messages-to-json",
+    "description": "Export messages to json from db messages",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Pavel\\MessagesToJson\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pavel",
+            "email": "ironerg@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pavel\\MessagesToJson\\MessagesToJsonServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "illuminate/support": "^10.10",
+        "illuminate/console": "^10.10"
+    }
+}
