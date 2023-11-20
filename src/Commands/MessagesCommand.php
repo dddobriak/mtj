@@ -24,7 +24,7 @@ class MessagesCommand extends Command
 
         $this->info('You have requested data for user ID: ' . $ask);
 
-        $link = $messageService->saveMessagesToJson($ask);
+        $link = $messageService->saveMessagesToJson($choise, $ask);
 
         $this->comment('Take it here: ' . $link);
 
